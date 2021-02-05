@@ -231,6 +231,20 @@ The possible values for `disseminationControls` are:
 | DL ONLY | DISSEMINATION LIST CONTROLLED |
 | REL TO USA, LIST | AUTHORIZED FOR RELEASE TO CERTAIN FOREIGN NATIONALS ONLY |
 
+### Distribution Statement
+The `distributionStatement` attribute (String) identifies legacy distribution statements for technical documents, including research, development, engineering, test, sustainment, and logistics information and serve the purpose to denote the extent to which they are available for secondary distribution, release, and dissementation without additional approvals or authorizations (pursuant to [DoDI 5230.24](https://www.darpa.mil/attachments/Distribution%20Statements%20on%20Technical%20Documents-%20updated.pdf)).  
+
+Distribution Statements must not be altered in any way from policy and as documented below. Distribution Statement A is only valid for UNCLASSIFIED data.  Distribution Statement B, C, D, E, and F may be used with UNCLASSIFIED or CLASSIFIED data.  Distribution Statements B, C, D, and E are expressed in a standard format and should not only include the Authorized audience, but the Reason for control, Data of determination, and controlling office (identified as variables in parentheses in the distribution statement.
+
+| Table of Distribution Statements (and Fill Ins) |
+| ----------------------------------------------- |
+| DISTRIBUTION STATEMENT A. Approved for public release. |
+| DISTRIBUTION STATEMENT B. Distribution authorized to U.S. Government agencies only *(fill in reason) (date of determination)*. Other requests for this document shall be referred to *(insert controlling DoD office)*. |
+| DISTRIBUTION STATEMENT C. Distribution authorized to U.S. Government agencies and their contractors *(fill in reason) (date of determination)*. Other requests for this document shall be referred to *(insert controlling DoD office)*. |
+| DISTRIBUTION STATEMENT D. Distribution authorized to the Department of Defense and U.S. DoD contractors only *(fill in reason) (date of determination)*. Other requests shall be referred to *(insert controlling DoD office)*. |
+| DISTRIBUTION STATEMENT E. Distribution authorized to DoD Components only *(fill in reason) (date of determination)*. Other requests shall be referred to *(insert controlling DoD office)*. |
+| DISTRIBUTION STATEMENT F. Further dissemination only as directed by *(inserting controlling DoD office)* *(date of determination)* or higher DoD authority. |
+
 ### Display Only To
 
 The `displayOnlyTo` attribute (Array[String]) identifies one or more countries and/or international organizations to which classified information may be displayed but NOT released based on the determination of an originator in accordance with established foreign disclosure procedures. This attribute is used in conjunction with the `DISPLAYONLY` value of the `disseminationControls` attribute.
