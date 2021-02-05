@@ -234,7 +234,7 @@ The possible values for `disseminationControls` are:
 ### Distribution Statement
 The `distributionStatement` attribute (String) identifies legacy distribution statements for technical documents, including research, development, engineering, test, sustainment, and logistics information and serve the purpose to denote the extent to which they are available for secondary distribution, release, and dissementation without additional approvals or authorizations (pursuant to [DoDI 5230.24](https://www.darpa.mil/attachments/Distribution%20Statements%20on%20Technical%20Documents-%20updated.pdf)).  
 
-Distribution Statements must not be altered in any way from policy and as documented below. Distribution Statement A is only valid for UNCLASSIFIED data.  Distribution Statement B, C, D, E, and F may be used with UNCLASSIFIED or CLASSIFIED data.  Distribution Statements B, C, D, and E are expressed in a standard format and should not only include the Authorized audience, but the Reason for control, Data of determination, and controlling office (identified as variables in parentheses in the distribution statement.
+Distribution Statements must not be altered in any way from policy and as documented below. Distribution Statement A is only valid for UNCLASSIFIED data.  Distribution Statements B, C, D, E, and F may be used with UNCLASSIFIED or CLASSIFIED data.  Distribution Statements B, C, D, and E are expressed in a standard format and should not only include the Authorized audience, but the Reason for control, Data of determination, and controlling office (identified as variables in parentheses in the distribution statement).
 
 List of possible values for `distributionStatement`:
 
@@ -268,13 +268,13 @@ The Government's rights to use, modify, reproduce, release, perform, display, or
 
 When included, the `3rdPartyDistributionContract` is a JSON Object containing four required fields: `contractNumber`, `contractorName`, `contractorAddress`, and `expirationDate`.  See below example:
 
-```
-"3rdPartyDistributionContract": {
-  "contractNumber": "",
-  "contractorName": "",
-  "contractorAddress": "",
-  "expirationDate": ""
-}
+```json
+  "3rdPartyDistributionContract": {
+    "contractNumber": "",
+    "contractorName": "",
+    "contractorAddress": "",
+    "expirationDate": ""
+  }
 ```
 
 ### Copyright
