@@ -236,7 +236,9 @@ The `distributionStatement` attribute (String) identifies legacy distribution st
 
 Distribution Statements must not be altered in any way from policy and as documented below. Distribution Statement A is only valid for UNCLASSIFIED data.  Distribution Statement B, C, D, E, and F may be used with UNCLASSIFIED or CLASSIFIED data.  Distribution Statements B, C, D, and E are expressed in a standard format and should not only include the Authorized audience, but the Reason for control, Data of determination, and controlling office (identified as variables in parentheses in the distribution statement.
 
-| Table of Distribution Statements (and Fill Ins) |
+List of possible values for `distributionStatement`:
+
+| Distribution Statements (*with Fill Ins*) |
 | ----------------------------------------------- |
 | DISTRIBUTION STATEMENT A. Approved for public release. |
 | DISTRIBUTION STATEMENT B. Distribution authorized to U.S. Government agencies only *(fill in reason) (date of determination)*. Other requests for this document shall be referred to *(insert controlling DoD office)*. |
@@ -244,6 +246,40 @@ Distribution Statements must not be altered in any way from policy and as docume
 | DISTRIBUTION STATEMENT D. Distribution authorized to the Department of Defense and U.S. DoD contractors only *(fill in reason) (date of determination)*. Other requests shall be referred to *(insert controlling DoD office)*. |
 | DISTRIBUTION STATEMENT E. Distribution authorized to DoD Components only *(fill in reason) (date of determination)*. Other requests shall be referred to *(insert controlling DoD office)*. |
 | DISTRIBUTION STATEMENT F. Further dissemination only as directed by *(inserting controlling DoD office)* *(date of determination)* or higher DoD authority. |
+
+### Third Party-Imposed Distribution Statements
+The `3rdPartyDistributionStatement`,  `3rdPartyDistributionWarning`, and `3rdPartyDistributionContract` support additional distribution statements (pursuant to [DoDI 5230.24](https://www.darpa.mil/attachments/Distribution%20Statements%20on%20Technical%20Documents-%20updated.pdf) Enclosure 5) which generally allow contractors to retain ownership of the intellectual property that is embodied in technical data, documents, or information that is delivered or otherwise provided to the Government.  If a third party-imposed distribution statement is included in the ISM, the `3rdPartyDistributionWarning` and `3rdPartyDistributionContract`are both required as well.
+
+Typically, the `3rdPartyDistributionStatement` can be defined by five pre-defined distribution statements in the table below; however, in the event that an informal pre-existing marking was authorized under a previous Government contract, that authorized marking should be included as the value for `3rdPartyDistributionStatement`.
+
+| Third Party-Imposed Distribution Statements |
+| ------------------------------------------- |
+| The Government Purpose Rights |
+| Limited Rights |
+| Restricted Rights |
+| Special License Rights |
+| Small Business Innovation Research (SBIR) Program |
+
+When included, the value of `3rdPartyDistributionWarning` should always be as follows:
+
+```
+The Government's rights to use, modify, reproduce, release, perform, display, or disclose these technical data are restricted by paragraph (b)(2) of the Rights in Technical Data-Noncommercial Items clause contained in the above identified contract.  No restrictions apply after the expiration date shown above.  Any reproduction of technical data or portions thereof marked with this legend must also reproduce markings.
+```
+
+When included, the `3rdPartyDistributionContract` is a JSON Object containing four required fields: `contractNumber`, `contractorName`, `contractorAddress`, and `expirationDate`.  See below example:
+
+```
+"3rdPartyDistributionContract": {
+  "contractNumber": "",
+  "contractorName": "",
+  "contractorAddress": "",
+  "expirationDate": ""
+}
+```
+
+### Copyright
+The `copyright` value may be added as a Third Party-Imposed Distribution Statement (pursuant to [DoDI 5230.24](https://www.darpa.mil/attachments/Distribution%20Statements%20on%20Technical%20Documents-%20updated.pdf) Enclosure 5). The specificied format of a `copyright` value is: `Copyright` or `©` followed by [Date] [Copyright Owner].
+
 
 ### Display Only To
 
