@@ -1,15 +1,15 @@
-# JSON Information Security Marking Standard (JSON-ISM) --- DRAFT
+# JSON Information Security Marking Standard (JSON-ISM)
 
 ## Introduction
 
 Department of Defense (DoD) policy requires the identification and protection of national security information and controlled unclassified information (CUI).  Department of Defense Manual (DoDM) 5200.01, Volumes 2 and 4 (referenced below) describe how to appropriately mark classified information and CUI to facilitate information sharing.  These markings are used (along with other factors) to make access/dissemination decisions.
 
-Exstensible Markup Language (XML) is widely used within the DoD to share information and a comprehensive marking standard called Information Security Marking Metadata (ISM or IC-ISM) has been made available by the Office of the Director of National Intelligence (referenced below).  We are not aware of any similar marking standards based on JavaScript Object Notation (JSON).  With the ever increasing popularity of REST APIs for sharing information between applications/systems, many now using JSON over XML, a standard for marking JSON documents has become necessary.  The JSON Information Security Marking Standard (JSON-ISM) aims to be that standard.
+Extensible Markup Language (XML) is widely used within the DoD to share information and a comprehensive marking standard called Information Security Marking Metadata (ISM or IC-ISM) has been made available by the Office of the Director of National Intelligence (referenced below).  We are not aware of any similar marking standards based on JavaScript Object Notation (JSON).  With the ever increasing popularity of REST APIs for sharing information between applications/systems, many now using JSON over XML, a standard for marking JSON documents has become necessary.  The JSON Information Security Marking Standard (JSON-ISM) aims to be that standard.
 
 ## References
 
-* [DoDM 5200.01, Volume 2 - DoD Information Security Program: Marking of Classified Information](http://www.dtic.mil/whs/directives/corres/pdf/520001_vol2.pdf)
-* [DoDM 5200.01, Volume 4 - DoD Information Security Program: Controlled Unclassified Information (CUI)](http://www.dtic.mil/whs/directives/corres/pdf/520001_vol4.pdf)
+* [DoDI 5200.48 - Controlled Unclassified Information (CUI)](https://www.esd.whs.mil/Portals/54/Documents/DD/issuances/dodi/520048p.PDF?ver=2020-03-06-100640-800)
+* [DoDI 5230.24 - Distribution Statements on Technical Documents](https://www.darpa.mil/attachments/Distribution%20Statements%20on%20Technical%20Documents-%20updated.pdf)
 * [Office of the Director of National Intelligence - Information Security Marking Metadata (ISM)](https://www.dni.gov/index.php/about/organization/chief-information-officer/information-security-marking-metadata)
 
 ## Overview
@@ -214,18 +214,72 @@ The possible values for `disseminationControls` are:
 | Value | Description |
 | ----- | ----------- |
 | RS | RISK SENSITIVE |
-| FOUO | FOR OFFICIAL USE ONLY |
 | OC | ORIGINATOR CONTROLLED |
 | OC-USGOV | ORIGINATOR CONTROLLED US GOVERNMENT |
 | IMC | CONTROLLED IMAGERY |
-| NF | NOT RELEASABLE TO FOREIGN NATIONALS |
+| NOFORN | NOT RELEASABLE TO FOREIGN NATIONALS |
 | PR | CAUTION-PROPRIETARY INFORMATION INVOLVED |
 | REL | AUTHORIZED FOR RELEASE TO |
 | RELIDO | RELEASABLE BY INFORMATION DISCLOSURE OFFICIAL |
 | EYES | EYES ONLY |
 | DSEN | DEA SENSITIVE |
 | FISA | FOREIGN INTELLIGENCE SURVEILLANCE ACT |
-| DISPLAYONLY | AUTHORIZED FOR DISPLAY BUT NOT RELEASE TO |
+| DISPLAY ONLY | DISPLAY ONLY (AUTHORIZED FOR DISPLAY BUT NOT RELEASE TO) |
+| FED ONLY | FEDERAL EMPLOYEES ONLY |
+| FEDCON | FEDERAL EMPLOYEES AND CONTRACTORS ONLY |
+| NOCON | NO DISSEMINATION TO CONTRACTORS |
+| DL ONLY | DISSEMINATION LIST CONTROLLED |
+| REL TO USA, LIST | AUTHORIZED FOR RELEASE TO CERTAIN FOREIGN NATIONALS ONLY |
+
+### Distribution Statement
+The `distributionStatement` attribute (String) identifies legacy distribution statements for technical documents, including research, development, engineering, test, sustainment, and logistics information and serve the purpose to denote the extent to which they are available for secondary distribution, release, and dissementation without additional approvals or authorizations (pursuant to [DoDI 5230.24](https://www.darpa.mil/attachments/Distribution%20Statements%20on%20Technical%20Documents-%20updated.pdf)).  
+
+Distribution Statements must not be altered in any way from policy and as documented below. Distribution Statement A is only valid for UNCLASSIFIED data.  Distribution Statements B, C, D, E, and F may be used with UNCLASSIFIED or CLASSIFIED data.  Distribution Statements B, C, D, and E are expressed in a standard format and should not only include the Authorized audience, but the Reason for control, Data of determination, and controlling office (identified as variables in parentheses in the distribution statement).
+
+List of possible values for `distributionStatement`:
+
+| Distribution Statements (*with Fill Ins*) |
+| ----------------------------------------------- |
+| DISTRIBUTION STATEMENT A. Approved for public release. |
+| DISTRIBUTION STATEMENT B. Distribution authorized to U.S. Government agencies only *(fill in reason) (date of determination)*. Other requests for this document shall be referred to *(insert controlling DoD office)*. |
+| DISTRIBUTION STATEMENT C. Distribution authorized to U.S. Government agencies and their contractors *(fill in reason) (date of determination)*. Other requests for this document shall be referred to *(insert controlling DoD office)*. |
+| DISTRIBUTION STATEMENT D. Distribution authorized to the Department of Defense and U.S. DoD contractors only *(fill in reason) (date of determination)*. Other requests shall be referred to *(insert controlling DoD office)*. |
+| DISTRIBUTION STATEMENT E. Distribution authorized to DoD Components only *(fill in reason) (date of determination)*. Other requests shall be referred to *(insert controlling DoD office)*. |
+| DISTRIBUTION STATEMENT F. Further dissemination only as directed by *(inserting controlling DoD office)* *(date of determination)* or higher DoD authority. |
+
+### Third Party-Imposed Distribution Statements
+The `3rdPartyDistributionStatement`,  `3rdPartyDistributionWarning`, and `3rdPartyDistributionContract` support additional distribution statements (pursuant to [DoDI 5230.24](https://www.darpa.mil/attachments/Distribution%20Statements%20on%20Technical%20Documents-%20updated.pdf) Enclosure 5) which generally allow contractors to retain ownership of the intellectual property that is embodied in technical data, documents, or information that is delivered or otherwise provided to the Government.  If a third party-imposed distribution statement is included in the ISM, the `3rdPartyDistributionWarning` and `3rdPartyDistributionContract`are both required as well.
+
+Typically, the `3rdPartyDistributionStatement` can be defined by five pre-defined distribution statements in the table below; however, in the event that an informal pre-existing marking was authorized under a previous Government contract, that authorized marking should be included as the value for `3rdPartyDistributionStatement`.
+
+| Third Party-Imposed Distribution Statements |
+| ------------------------------------------- |
+| The Government Purpose Rights |
+| Limited Rights |
+| Restricted Rights |
+| Special License Rights |
+| Small Business Innovation Research (SBIR) Program |
+
+When included, the value of `3rdPartyDistributionWarning` should always be as follows:
+
+```
+The Government's rights to use, modify, reproduce, release, perform, display, or disclose these technical data are restricted by paragraph (b)(2) of the Rights in Technical Data-Noncommercial Items clause contained in the above identified contract.  No restrictions apply after the expiration date shown above.  Any reproduction of technical data or portions thereof marked with this legend must also reproduce markings.
+```
+
+When included, the `3rdPartyDistributionContract` is a JSON Object containing four required fields: `contractNumber`, `contractorName`, `contractorAddress`, and `expirationDate`.  See below example:
+
+```json
+  "3rdPartyDistributionContract": {
+    "contractNumber": "",
+    "contractorName": "",
+    "contractorAddress": "",
+    "expirationDate": ""
+  }
+```
+
+### Copyright
+The `copyright` value may be added as a Third Party-Imposed Distribution Statement (pursuant to [DoDI 5230.24](https://www.darpa.mil/attachments/Distribution%20Statements%20on%20Technical%20Documents-%20updated.pdf) Enclosure 5). The specificied format of a `copyright` value is: `Copyright` or `©` followed by [Date] [Copyright Owner].
+
 
 ### Display Only To
 
