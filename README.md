@@ -84,9 +84,9 @@ When dealing with unclassified information that has no limitations on disseminat
 
 CUI is separated into two types: CUI Basic and CUI Specified.
 
-*CUI Basic* is the standard type of CUI.
+**CUI Basic** is the standard type of CUI.
 
-*CUI Specified* contains special handling/dissemination requirements based on Category or Subcategory.  These handling requirements are based on laws, regulations, or government-wide policies.
+**CUI Specified** contains special handling/dissemination requirements based on Category or Subcategory.  These handling requirements are based on laws, regulations, or government-wide policies.
 
 When dealing with CUI Basic, the `categoryMarkings` attribute is optional, though recommended.
 
