@@ -131,6 +131,7 @@ The `categoryMarkings` attribute (Array[String]) is used to identify one or more
 Example values for `categoryMarkings` are:
 
 | Basic/Specified | Value | Category |
+| --------------- | ----- | -------- |
 | Specified | SP-CRITAN | Ammonium Nitrate |
 | Basic     | CVI       | Chemical-terrorism Vulnerability Information |
 | Specified | SP-CVI    | Chemical-terrorism Vulnerability Information |
