@@ -1553,6 +1553,10 @@ The possible values for `releasableTo` are:
 | TEYE | THREE EYES |
 | UNCK | United Nations Command, Korea |
 
+### Releasable to Government and/or Contractors
+
+The `releasableToGovtAndContractors` attribute (Array[String]) identifies one or more individual government officials or government contractors to which classified information may be released based on the determination of an originator in accordance with established foreign disclosure procedures.  This attribute is used in conjunction with the `disseminationControls` attribute.
+
 ### Non-IC Markings
 
 The `nonICmarkings` attribute (Array[String]) identifies one or more indicators for expanding or limiting the distribution of information originating from non-intelligence components.
@@ -1562,7 +1566,6 @@ The possible patterns for `nonICmarkings` are:
 | Pattern | Description |
 | ------- | ----------- |
 | ACCM-[A-Z0-9\-_]{1,61} | The name of the ALTERNATE COMPENSATORY CONTROL MEASURE, substituting "_" for a space |
-| NNPI | NAVAL NUCLEAR PROPULSION INFORMATION |
 
 The possible values for `nonICmarkings` are:
 
@@ -1576,6 +1579,9 @@ The possible values for `nonICmarkings` are:
 | LES | LAW ENFORCEMENT SENSITIVE |
 | LES-NF | LAW ENFORCEMENT SENSITIVE NOFORN |
 | SSI | SENSITIVE SECURITY INFORMATION |
+| NNPI | NAVAL NUCLEAR PROPULSION INFORMATION |
+| UCNI | UNCLASSIFIED CONTROLLED NUCLEAR INFORMATION |
+| NDP-1 | NATIONAL DISCLOSURE POLICY |
 
 ### Classified By
 
