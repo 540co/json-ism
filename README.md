@@ -93,6 +93,8 @@ When dealing with CUI Basic, the `categoryMarkings` attribute is optional, thoug
 
 When dealing with CUI Specified, the `categoryMarkings` attribute is required.
 
+When dealing with CUI, all unclassified data must be marked at the portion level.
+
 ### Classified Information
 
 When dealing with classified information, the `classification` and `ownerProducer` attributes are required.  All other attributes are optional.
