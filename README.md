@@ -234,6 +234,15 @@ The possible values for `disseminationControls` are:
 | DL ONLY | DISSEMINATION LIST CONTROLLED |
 | REL TO USA, LIST | AUTHORIZED FOR RELEASE TO CERTAIN FOREIGN NATIONALS ONLY |
 
+### Banner Line Markings
+The `bannerLine` attribute is an optional, convenience attribute that is a combination of the `classification`, `categoryMarkings`, and/or `disseminationControls` attributes.  This field can be used to easily display the complete banner line marking for the data payload for inclusion in a web UI, document, etc.  This attribute should not be used for portion-level markings.
+
+As an example:
+
+```json
+  "bannerLine": "CUI//CATEGORIES/SUBCATEGORIES//DISSEM"
+```
+
 ### Distribution Statement
 The `distributionStatement` attribute (String) identifies legacy distribution statements for technical documents, including research, development, engineering, test, sustainment, and logistics information and serve the purpose to denote the extent to which they are available for secondary distribution, release, and dissementation without additional approvals or authorizations (pursuant to [DoDI 5230.24](https://www.darpa.mil/attachments/Distribution%20Statements%20on%20Technical%20Documents-%20updated.pdf)).  
 
