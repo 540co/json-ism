@@ -10,7 +10,11 @@ Extensible Markup Language (XML) is widely used within the DoD to share informat
 
 * [DoDI 5200.48 - Controlled Unclassified Information (CUI)](https://www.esd.whs.mil/Portals/54/Documents/DD/issuances/dodi/520048p.PDF?ver=2020-03-06-100640-800)
 * [DoDI 5230.24 - Distribution Statements on Technical Documents](https://www.darpa.mil/attachments/Distribution%20Statements%20on%20Technical%20Documents-%20updated.pdf)
-* [Office of the Director of National Intelligence - Information Security Marking Metadata (ISM)](https://www.dni.gov/index.php/about/organization/chief-information-officer/information-security-marking-metadata)
+* [Office of the Director of National Intelligence - Information Security Marking Metadata (ISM)](https://www.dni.gov/index.php/who-we-are/organizations/ic-cio/ic-cio-related-menus/ic-cio-related-links/ic-technical-specifications/information-security-marking-metadata)
+* [ICD 710 - Classification Management and Control Markings System](https://www.dni.gov/files/documents/ICD/ICD_710.pdf)
+* [DoDI 5200.48 - Controlled Unclassified Information](https://www.esd.whs.mil/Portals/54/Documents/DD/issuances/dodi/520048p.PDF)
+* [CUI Marking Handbook](https://www.archives.gov/files/cui/documents/20161206-cui-marking-handbook-v1-1-20190524.pdf)
+* [CUI Categories](https://www.archives.gov/cui/registry/category-list)
 
 ## Overview
 
@@ -77,6 +81,18 @@ This sections describes which attributes of the ism object are required based on
 
 When dealing with unclassified information that has no limitations on dissemination, all ISM attributes are optional.  It is recommended however to include `version`, `classification`, and `ownerProducer` at the resource level.
 
+### Controlled Unclassified Information (CUI)
+
+CUI is separated into two types: CUI Basic and CUI Specified.
+
+**CUI Basic** is the standard type of CUI.
+
+**CUI Specified** contains special handling/dissemination requirements based on Category or Subcategory.  These handling requirements are based on laws, regulations, or government-wide policies.
+
+When dealing with CUI Basic, the `categoryMarkings` attribute is optional, though recommended.
+
+When dealing with CUI Specified, the `categoryMarkings` attribute is required.
+
 ### Classified Information
 
 When dealing with classified information, the `classification` and `ownerProducer` attributes are required.  All other attributes are optional.
@@ -101,6 +117,7 @@ The possible values for `classification` are:
 | C | CONFIDENTIAL |
 | S | SECRET |
 | TS | TOP SECRET |
+| CUI | CONTROLLED |
 | U | UNCLASSIFIED |
 
 **Example**
@@ -123,6 +140,44 @@ The `controlledByOffice` attribute (String) is the DoD office determining that t
 ```json
   "controlledByOffice": "XYZ-456"
 ```
+
+### Category Markings
+
+The `categoryMarkings` attribute (Array[String]) is used to identify one or more CUI Categories or Subcategories.  This attribute is only used when `classification` is `CUI` and is required when dealing with CUI Specified.  When CUI Specified, the category is preceded with `SP-`.
+
+Example values for `categoryMarkings` are:
+
+| Basic/Specified | Value | Category |
+| --------------- | ----- | -------- |
+| Specified | SP-CRITAN | Ammonium Nitrate |
+| Basic     | CVI       | Chemical-terrorism Vulnerability Information |
+| Specified | SP-CVI    | Chemical-terrorism Vulnerability Information |
+| Specified | SP-CEII   | Critical Energy Infrastructure Information |
+| Basic     | EMGT      | Emergency Management |
+| Basic     | CRIT      | General Critical Infrastructure Information |
+| Basic     | ISVI      | Information Systems Vulnerability Information |
+| Basic     | PHYS      | Physical Security |
+| Specified | SP-PHYS   | Physical Security |
+| Specified | SP-PCII   | Protected Critical Infrastructure Information |
+| Basic     | SAFE      | SAFETY Act Information |
+| Specified | SP-TSCA   | Toxic Substances |
+| Basic     | WATER     | Water Assessments |
+
+**For a complete and up to date list of CUI Categories, visit ([CUI Categories](https://www.archives.gov/cui/registry/category-list))**
+
+**Example**
+```json
+  "categoryMarkings": [
+    "SP-CVI",
+    "CRIT"
+  ]  
+```
+
+When this attribute is used to generate banner or portion markings, the following rules apply:
+- Category Markings are required for CUI Specified
+- CUI Specified markings MUST precede CUI Basic Markings
+- CUI Category/Subcategory markings MUST be alphabetized within CUI type (Basic or Specified)
+- Alphabetized Specified CUI categories/subcategories MUST precede alphabetized Basic CUI categories/subcategories
 
 ### Owner Producer
 
@@ -239,9 +294,9 @@ The possible values for `disseminationControls` are:
 | RS | RISK SENSITIVE |
 | OC | ORIGINATOR CONTROLLED |
 | OC-USGOV | ORIGINATOR CONTROLLED US GOVERNMENT |
-| IMC | CONTROLLED IMAGERY |
+| IMCON | CONTROLLED IMAGERY |
 | NOFORN | NOT RELEASABLE TO FOREIGN NATIONALS |
-| PR | CAUTION-PROPRIETARY INFORMATION INVOLVED |
+| PROPIN | CAUTION-PROPRIETARY INFORMATION INVOLVED |
 | REL | AUTHORIZED FOR RELEASE TO |
 | RELIDO | RELEASABLE BY INFORMATION DISCLOSURE OFFICIAL |
 | EYES | EYES ONLY |
@@ -1576,6 +1631,10 @@ The possible values for `releasableTo` are:
 | TEYE | THREE EYES |
 | UNCK | United Nations Command, Korea |
 
+### Releasable to Government and/or Contractors
+
+The `releasableToGovtAndContractors` attribute (Array[String]) identifies one or more individual government officials or government contractors to which classified information may be released based on the determination of an originator in accordance with established foreign disclosure procedures.  This attribute is used in conjunction with the `disseminationControls` attribute.
+
 ### Non-IC Markings
 
 The `nonICmarkings` attribute (Array[String]) identifies one or more indicators for expanding or limiting the distribution of information originating from non-intelligence components.
@@ -1585,7 +1644,6 @@ The possible patterns for `nonICmarkings` are:
 | Pattern | Description |
 | ------- | ----------- |
 | ACCM-[A-Z0-9\-_]{1,61} | The name of the ALTERNATE COMPENSATORY CONTROL MEASURE, substituting "_" for a space |
-| NNPI | NAVAL NUCLEAR PROPULSION INFORMATION |
 
 The possible values for `nonICmarkings` are:
 
@@ -1599,6 +1657,9 @@ The possible values for `nonICmarkings` are:
 | LES | LAW ENFORCEMENT SENSITIVE |
 | LES-NF | LAW ENFORCEMENT SENSITIVE NOFORN |
 | SSI | SENSITIVE SECURITY INFORMATION |
+| NNPI | NAVAL NUCLEAR PROPULSION INFORMATION |
+| UCNI | UNCLASSIFIED CONTROLLED NUCLEAR INFORMATION |
+| NDP-1 | NATIONAL DISCLOSURE POLICY |
 
 ### Classified By
 
