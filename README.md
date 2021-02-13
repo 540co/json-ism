@@ -108,6 +108,31 @@ The possible values for `classification` are:
   "classification": "U"
 ```
 
+### Controlled By Name
+
+The `controlledByName` attribute (String) specifies the name of the DoD component determining that the information is CUI for the resource
+**Example**
+```json
+  "controlledByName": "Department of the Navy"
+```
+
+### Controlled By Office
+
+The `controlledByOffice` attribute (String) is the DoD office determining that the information is CUI for the resource
+**Example**
+```json
+  "controlledByOffice": "XYZ-456"
+```
+
+### CUI Categories
+
+The `cuiCategories` attribute (Array[String]) identifies all types of CUI contained in the resource or portion marking.  The official CUI Registry is on the NARA Website at https://www.archives.gov/cui.
+
+**Example**
+```json
+  "cuiCategories": [ "Controlled Technical Information", "Invention"  ]
+```
+
 ### Owner Producer
 
 The `ownerProducer` attribute (Array[String]) is used to identify one or more national governments or international organizations that have purview over the classification marking of a resource or portion therein. This attribute is always used in conjunction with the `classification` attribute.  Taken together, these two attributes specify the classification category and type of classification (US, non-US, or Joint).
@@ -117,6 +142,13 @@ The `ownerProducer` attribute (Array[String]) is used to identify one or more na
   "ownerProducer": [
     "USA"
   ]
+```
+### Point Of Contact
+The `poc` attribute attribute (String) contains the phone number or email address for the originating DoD Component or authorized CUI holder for the resource.
+
+**Example**
+```json
+  "poc": "+1 (202) 555-4545"
 ```
 
 ### Joint
