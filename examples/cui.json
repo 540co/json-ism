@@ -1,0 +1,43 @@
+{
+  "ism":{
+    "version": "1",
+    "classification": "CUI",
+    "ownerProducer": [
+      "USA"
+    ],
+    "disseminationControls": [
+      "FEDCON"
+    ],
+    "controlledByComponent" : "Department of the Navy",
+    "controlledByOffice" : "XYZ-1492",
+    "poc" : "john.t.civ@mail.mil",
+    "cuiCategories" : [
+    	"Controlled Technical Information",
+    	"Inventions"
+    ]
+  },
+  "data":{
+    "programName": "Sensitive Program Name",
+    "programNameIsm" : {
+      "classification": "CUI",
+      "ownerProducer": [
+        "USA"
+      ],
+      "disseminationControls": [
+        "FEDCON"
+      ],
+      "cuiCategories" : [
+        "Controlled Technical Information",
+        "Inventions"
+      ]
+    },
+    "description": "This is a sample response containing CUI//FEDCON and unclassified information.  Classification markings are for illustration purposes only.",
+    "descriptionIsm" : {
+      "classification": "U"
+    },
+    "createdAt": "2020-02-13-T10:00:00Z",
+    "createdAtIsm" : {
+      "classification": "U"
+    }
+  }
+}
