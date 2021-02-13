@@ -124,15 +124,6 @@ The `controlledByOffice` attribute (String) is the DoD office determining that t
   "controlledByOffice": "XYZ-456"
 ```
 
-### CUI Categories
-
-The `cuiCategories` attribute (Array[String]) identifies all types of CUI contained in the resource or portion marking.  The official CUI Registry is on the NARA Website at https://www.archives.gov/cui.
-
-**Example**
-```json
-  "cuiCategories": [ "Controlled Technical Information", "Invention"  ]
-```
-
 ### Owner Producer
 
 The `ownerProducer` attribute (Array[String]) is used to identify one or more national governments or international organizations that have purview over the classification marking of a resource or portion therein. This attribute is always used in conjunction with the `classification` attribute.  Taken together, these two attributes specify the classification category and type of classification (US, non-US, or Joint).
