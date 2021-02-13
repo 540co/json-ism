@@ -125,6 +125,22 @@ The possible values for `classification` are:
   "classification": "U"
 ```
 
+### Controlled By Name
+
+The `controlledByName` attribute (String) specifies the name of the DoD component determining that the information is CUI for the resource
+**Example**
+```json
+  "controlledByName": "Department of the Navy"
+```
+
+### Controlled By Office
+
+The `controlledByOffice` attribute (String) is the DoD office determining that the information is CUI for the resource
+**Example**
+```json
+  "controlledByOffice": "XYZ-456"
+```
+
 ### Category Markings
 
 The `categoryMarkings` attribute (Array[String]) is used to identify one or more CUI Categories or Subcategories.  This attribute is only used when `classification` is `CUI` and is required when dealing with CUI Specified.  When CUI Specified, the category is preceded with `SP-`.
@@ -172,6 +188,13 @@ The `ownerProducer` attribute (Array[String]) is used to identify one or more na
   "ownerProducer": [
     "USA"
   ]
+```
+### Point Of Contact
+The `poc` attribute attribute (String) contains the phone number or email address for the originating DoD Component or authorized CUI holder for the resource.
+
+**Example**
+```json
+  "poc": "+1 (202) 555-4545"
 ```
 
 ### Joint
