@@ -10,7 +10,8 @@ Extensible Markup Language (XML) is widely used within the DoD to share informat
 
 * [DoDI 5200.48 - Controlled Unclassified Information (CUI)](https://www.esd.whs.mil/Portals/54/Documents/DD/issuances/dodi/520048p.PDF?ver=2020-03-06-100640-800)
 * [DoDI 5230.24 - Distribution Statements on Technical Documents](https://www.darpa.mil/attachments/Distribution%20Statements%20on%20Technical%20Documents-%20updated.pdf)
-* [Office of the Director of National Intelligence - Information Security Marking Metadata (ISM)](https://www.dni.gov/index.php/about/organization/chief-information-officer/information-security-marking-metadata)
+* [Office of the Director of National Intelligence - Information Security Marking Metadata (ISM)](https://www.dni.gov/index.php/who-we-are/organizations/ic-cio/ic-cio-related-menus/ic-cio-related-links/ic-technical-specifications/information-security-marking-metadata)
+* [ICD 710 - Classification Management and Control Markings System](https://www.dni.gov/files/documents/ICD/ICD_710.pdf)
 * [DoDI 5200.48 - Controlled Unclassified Information](https://www.esd.whs.mil/Portals/54/Documents/DD/issuances/dodi/520048p.PDF)
 * [CUI Marking Handbook](https://www.archives.gov/files/cui/documents/20161206-cui-marking-handbook-v1-1-20190524.pdf)
 * [CUI Categories](https://www.archives.gov/cui/registry/category-list)
@@ -270,9 +271,9 @@ The possible values for `disseminationControls` are:
 | RS | RISK SENSITIVE |
 | OC | ORIGINATOR CONTROLLED |
 | OC-USGOV | ORIGINATOR CONTROLLED US GOVERNMENT |
-| IMC | CONTROLLED IMAGERY |
+| IMCON | CONTROLLED IMAGERY |
 | NOFORN | NOT RELEASABLE TO FOREIGN NATIONALS |
-| PR | CAUTION-PROPRIETARY INFORMATION INVOLVED |
+| PROPIN | CAUTION-PROPRIETARY INFORMATION INVOLVED |
 | REL | AUTHORIZED FOR RELEASE TO |
 | RELIDO | RELEASABLE BY INFORMATION DISCLOSURE OFFICIAL |
 | EYES | EYES ONLY |
